@@ -24,7 +24,7 @@
 - Vercel 환경: Vercel Blob의 immutable JSON records
 - Node.js 내장 test runner
 
-Vercel Blob은 각 변경을 새 JSON 파일로 저장합니다. 조회 시 ID별 최신 버전을 선택하며 삭제 시 해당 ID의 모든 버전을 제거합니다. 단일 파일을 덮어쓰지 않아 CDN 캐시와 동시 변경 충돌 가능성을 줄였습니다.
+Vercel Blob은 각 변경을 새 Private JSON 파일로 저장합니다. 조회 시 서버 Function이 인증된 SDK 요청으로 데이터를 읽고 ID별 최신 버전을 선택하며, 삭제 시 해당 ID의 모든 버전을 제거합니다. 단일 파일을 덮어쓰지 않아 동시 변경 충돌 가능성을 줄였습니다.
 
 ## 데이터 모델
 
@@ -126,13 +126,13 @@ npm run build
 | `STORAGE_MODE` | `file` | `file` 또는 `blob` |
 | `DATA_FILE` | `data/briefs.json` | 로컬 JSON 경로 |
 
-Vercel에서는 `VERCEL=1`을 감지해 자동으로 Blob mode를 사용합니다. Vercel 프로젝트의 **Storage → Create Database → Blob**에서 store를 연결하면 배포 Function에 OIDC 인증이 자동으로 제공됩니다. 토큰이나 `.env.local`은 GitHub에 commit하지 않습니다.
+Vercel에서는 `VERCEL=1`을 감지해 자동으로 Blob mode를 사용합니다. Vercel 프로젝트의 **Storage → Create Database → Blob**에서 Private store를 연결하면 배포 Function에 인증 정보가 자동으로 제공됩니다. 토큰이나 `.env.local`은 GitHub에 commit하지 않습니다.
 
 ## 배포
 
 1. 이 폴더를 Public GitHub 저장소에 push합니다.
 2. Vercel에서 저장소를 Import합니다.
-3. 배포 프로젝트의 Storage 탭에서 Public Blob store를 생성하고 연결합니다.
+3. 배포 프로젝트의 Storage 탭에서 Private Blob store를 생성하고 연결합니다.
 4. Production deployment를 다시 실행합니다.
 5. `/api/health`, 생성, 조회, 상태 변경, 삭제를 확인합니다.
 
