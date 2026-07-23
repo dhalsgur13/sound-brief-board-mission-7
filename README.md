@@ -4,7 +4,7 @@
 
 ## 제출 링크
 
-- GitHub: 배포 후 추가
+- GitHub: https://github.com/dhalsgur13/sound-brief-board-mission-7
 - Vercel: 배포 후 추가
 
 ## MVP 기능
