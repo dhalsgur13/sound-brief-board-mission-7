@@ -7,6 +7,11 @@
 - GitHub: https://github.com/dhalsgur13/sound-brief-board-mission-7
 - Vercel: https://sound-brief-board-mission-7.vercel.app
 
+## 제출 자료
+
+- [API 기능 명세서 PDF](output/pdf/1_API_기능_명세서.pdf)
+- [서버 정상 처리 진행 현황 이미지](output/images/2_서버_정상_처리_진행_현황.png)
+
 ## MVP 기능
 
 1. 사운드 brief 전체 조회
